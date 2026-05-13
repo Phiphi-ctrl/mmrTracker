@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
+from models.player import Player
 
 @dataclass
 class Team:
-    name: str
-    team_num: int
     players: list[Player] = field(default_factory=list)

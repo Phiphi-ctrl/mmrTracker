@@ -1,7 +1,9 @@
 import requests
 
 
-def fetch_profile(platform: str, player_id: str) -> dict:
+def fetch_profile(platform: str | None, player_id: str | None) -> dict:
+    if player_id is None or platform is None:
+        raise ValueError("Player id and platform cannot be None")
     url = (
         "https://api.tracker.gg/api/v2/"
         f"rocket-league/standard/profile/{platform}/{player_id}"
@@ -23,10 +25,5 @@ def fetch_profile(platform: str, player_id: str) -> dict:
     }
 
     response = requests.get(url, headers=headers, timeout=10)
-
-    print("Status:", response.status_code)
-    print("Encoding:", response.headers.get("content-encoding"))
-    print("Preview:", response.text[:300])
-
     response.raise_for_status()
     return response.json()
