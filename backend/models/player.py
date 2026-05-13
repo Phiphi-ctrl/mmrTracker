@@ -1,4 +1,4 @@
-from tracker.tracker_client import fetch_profile
+from backend.tracker.tracker_client import fetch_profile
 
 
 RL_TO_TRACKER_PLATFORM = {
