@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from backend.models.player import Player
+from models.player import Player
 
 @dataclass
 class Team:

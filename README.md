@@ -1,4 +1,4 @@
-# RL MMR Tracker
+# RL MMR Live Display
 
 Small work-in-progress tool to recover and display Rocket League MMR while in-game rank/MMR visibility is limited by Easy Anti-Cheat.
 
