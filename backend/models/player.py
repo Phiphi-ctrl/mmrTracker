@@ -64,24 +64,11 @@ class Player:
             return self.id
         return self.name
 
-    def extract_ranked(self, mode: str | None) -> dict:
+    def extract_ranked(self) -> dict:
         if not self.is_trackable:
             return {}
 
-        if mode is None:
-            return {}
-
-        mode = mode.lower()
-
         valid_modes = set(self.PLAYLISTS.values())
-
-        if mode == "freeplay":
-            target_modes = valid_modes
-        elif mode in valid_modes:
-            target_modes = {mode}
-        else:
-            self.error = f"Unsupported mode: {mode}"
-            return {}
 
         self.data = fetch_profile(self.platform, self._get_tracker_lookup_id())
 
@@ -97,7 +84,7 @@ class Player:
             if playlist_name is None:
                 continue
 
-            if playlist_name not in target_modes:
+            if playlist_name not in valid_modes:
                 continue
 
             stats = segment.get("stats", {})

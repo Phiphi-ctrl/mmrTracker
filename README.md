@@ -38,6 +38,32 @@ Current goal: build a live MMR feed during matches.
 - Playlist MMR extraction in place
 - Live websocket ingestion and final UI/display layer still to be added
 
+## Development
+
+Start the backend and frontend together from PowerShell:
+
+```powershell
+.\scripts\dev.ps1
+```
+
+Or from Git Bash/WSL:
+
+```bash
+./scripts/dev.sh
+```
+
+The backend runs on `http://127.0.0.1:8000`. The frontend runs on the Vite URL printed in the frontend terminal, usually `http://localhost:5173`.
+
+## Backend
+
+Run backend with:
+
+```powershell
+.\.venv\Scripts\python -m uvicorn backend.api:app --host 127.0.0.1 --port 8000
+```
+
+Do not use Uvicorn `--reload` from the sandboxed Windows tool environment; it can hit named-pipe permission errors.
+
 ## Notes
 
 This project is intended to surface your own MMR data through external APIs. Use responsibly and make sure your usage follows Rocket League/Epic/Tracker terms of service.

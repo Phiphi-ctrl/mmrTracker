@@ -2,6 +2,8 @@
 .idea/
 AGENTS.md
 tasks/
+__pycache__/
+*.py[cod]
 
 # Logs
 logs
