@@ -40,6 +40,15 @@ Current goal: build a live MMR feed during matches.
 
 ## Development
 
+Double-click one of these Windows launchers from the project root:
+
+```text
+Start Fixture.bat
+Start Live.bat
+```
+
+`Start Fixture.bat` uses the static roster. `Start Live.bat` uses the Rocket League websocket and expects it on `127.0.0.1:49123`.
+
 Start the backend and frontend together from PowerShell:
 
 ```powershell
@@ -52,7 +61,27 @@ Or from Git Bash/WSL:
 ./scripts/dev.sh
 ```
 
+`dev.sh` uses fixture mode. Use these explicit Bash launchers when you want to choose the source:
+
+```bash
+./scripts/dev-fixture.sh
+```
+```bash
+./scripts/dev-live.sh
+```
+
+`dev-live.sh` expects the Rocket League websocket to be available on `127.0.0.1:49123`.
+
 The backend runs on `http://127.0.0.1:8000`. The frontend runs on the Vite URL printed in the frontend terminal, usually `http://localhost:5173`.
+
+Useful development environment variables:
+
+```powershell
+$env:MMR_TRACKER_CACHE_TTL_SECONDS="1"
+$env:MMR_TRACKER_PROFILE_CACHE_TTL_SECONDS="120"
+```
+
+`MMR_TRACKER_CACHE_TTL_SECONDS` controls how often the backend rebuilds the lobby payload. `MMR_TRACKER_PROFILE_CACHE_TTL_SECONDS` controls how often the same Tracker profile can be requested again.
 
 ## Backend
 
